@@ -277,6 +277,8 @@ NSString* status = [NSString stringWithFormat:@"{\"current_position\": \"%@\"}",
         [[AVAudioSession sharedInstance]
             setCategory: AVAudioSessionCategoryPlayback
             error: nil];
+        // in case mode is set to e.g. measurement by some other plugin
+        [[AVAudioSession sharedInstance] setMode: AVAudioSessionModeDefault error: nil];
         // Able to play in background
         [[AVAudioSession sharedInstance] setActive: YES error: nil];
         [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
